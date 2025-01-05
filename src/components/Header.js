@@ -1,9 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import useDecodeJWT from '../Hooks/useJwtToken'; // Adjust this import based on your file structure
 
 function Header() {
     const location = useLocation();
     const navigate = useNavigate();
+    const { decodedToken, decodeToken } = useDecodeJWT();
+    const [userName, setUserName] = useState('');
+
+    useEffect(() => {
+        const getToken = () => localStorage.getItem('token');
+        const token = getToken();
+        if (token) {
+            decodeToken(token);
+        } else {
+            console.log('No token found.');
+        }
+    }, [decodeToken]);
+
+    useEffect(() => {
+        if (decodedToken && decodedToken.userName) {
+            setUserName(decodedToken.userName); // Set the user's name from the decoded token
+            console.log('Decoded Token User Name:', decodedToken.userName);
+        }
+    }, [decodedToken]);
 
     const handleLogout = () => {
         localStorage.clear();
@@ -43,7 +63,7 @@ function Header() {
                         'Please Register'
                     ) : (
                         <span className="text-slate-950">
-                            {location.pathname === '/admin' ? 'Admin Panel' : 'Welcome Mahesh'}
+                            {location.pathname === '/admin' ? 'Admin Panel' : `Welcome ${userName}`}
                         </span>
                     )}
                 </div>
