@@ -31,7 +31,7 @@ function Register() {
     }
     return (
         <div className=' flex justify-center text-sla bg-white text-slate-700 mb-10 '>
-            <div className=' p-5 border w-1/2 items-center shadow-md rounded-lg -mt-10 bg-white'>
+            <div className=' p-5 border lg:w-1/2 md:w-full items-center shadow-md rounded-lg -mt-10 bg-white'>
                 <div className=' text-center text-2xl font-semibold uppercase py-3'>Register Form</div>
                 <form onSubmit={handleSubmit} className=' font-semibold '>
                     <div className=' py-2'>
