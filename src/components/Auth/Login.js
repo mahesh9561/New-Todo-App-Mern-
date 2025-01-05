@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useDecodeJWT from '../../Hooks/useJwtToken';
 import axios from 'axios';
@@ -22,14 +22,6 @@ function Login() {
             if (response.data.token) {
                 localStorage.setItem("token", response.data.token);
                 decodeToken(response.data.token);
-
-                if (decodedToken?.role === 'admin') {
-                    navigate('/admin');
-                } else if (decodedToken?.role === 'user') {
-                    navigate('/user');
-                } else {
-                    setError("Invalid role detected.");
-                }
             } else {
                 setError("Invalid login credentials.");
             }
@@ -37,6 +29,18 @@ function Login() {
             setError(error.response?.data?.message || "An error occurred during login.");
         }
     };
+
+    useEffect(() => {
+        if (decodedToken && decodedToken.role) {
+            if (decodedToken.role === 'admin') {
+                navigate('/admin');
+            } else if (decodedToken.role === 'user') {
+                navigate('/user');
+            } else {
+                setError("Invalid role detected.");
+            }
+        }
+    }, [decodedToken, navigate]);
 
     return (
         <div>
