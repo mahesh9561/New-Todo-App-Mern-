@@ -11,7 +11,7 @@ function Register() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:8005/api/auth/register', {
+            const response = await axios.post('https://new-todo-app-backend-2jg4.onrender.com/api/auth/register', {
                 name,
                 email,
                 mobile,

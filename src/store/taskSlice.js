@@ -16,7 +16,7 @@ export const sendTask = createAsyncThunk(
     'task/addTask',
     async (taskData, { rejectWithValue }) => {
         try {
-            const response = await axios.post('http://localhost:8005/api/task/addTask', taskData);
+            const response = await axios.post('https://new-todo-app-backend-2jg4.onrender.com/api/task/addTask', taskData);
             return response.data;
         } catch (error) {
             return rejectWithValue(error.response?.data || "Failed to add task");
@@ -28,7 +28,7 @@ export const getTask = createAsyncThunk(
     'task/getTasks',
     async (_, { rejectWithValue }) => {
         try {
-            const response = await axios.get('http://localhost:8005/api/task/getblog', {
+            const response = await axios.get('https://new-todo-app-backend-2jg4.onrender.com/api/task/getblog', {
                 withCredentials: true,
             });
             return response.data.data;
@@ -43,7 +43,7 @@ export const getSingleTask = createAsyncThunk(
     'task/getSingleTask',
     async (id, { rejectWithValue }) => {
         try {
-            const response = await axios.get(`http://localhost:8005/api/task/getblogs/${id}`, {
+            const response = await axios.get(`https://new-todo-app-backend-2jg4.onrender.com/api/task/getblogs/${id}`, {
                 withCredentials: true,
             });
             return response.data.data;
@@ -57,7 +57,7 @@ export const deleteTask = createAsyncThunk(
     'task/deleteTask',
     async (id, { rejectWithValue }) => {
         try {
-            const response = await axios.delete(`http://localhost:8005/api/task/delete/${id}`, {
+            const response = await axios.delete(`https://new-todo-app-backend-2jg4.onrender.com/api/task/delete/${id}`, {
                 withCredentials: true,
             });
             return response.data.data;
@@ -73,7 +73,7 @@ export const deleteTask = createAsyncThunk(
 //     'task/getUserProfile',
 //     async (id, { rejectWithValue }) => {
 //         try {
-//             const response = await axios.get(`http://localhost:8005/api/auth/profile`, {
+//             const response = await axios.get(`https://new-todo-app-backend-2jg4.onrender.com/api/auth/profile`, {
 //                 withCredentials: true,
 //             });
 //             return response.data.data;
@@ -86,7 +86,7 @@ export const getProfile = createAsyncThunk(
     'user/getUserProfile',
     async (_, { rejectWithValue }) => {
         try {
-            const response = await axios.get('http://localhost:8005/api/auth/profile', {
+            const response = await axios.get('https://new-todo-app-backend-2jg4.onrender.com/api/auth/profile', {
                 withCredentials: true, // Ensure withCredentials is set for authorization
             });
             return response.data; // Return user profile data
@@ -101,7 +101,7 @@ export const editTask = createAsyncThunk(
     'task/editTask',
     async ({ id, updatedTaskData }, { rejectWithValue }) => {
         try {
-            const response = await axios.put(`http://localhost:8005/api/task/update/${id}`, updatedTaskData, {
+            const response = await axios.put(`https://new-todo-app-backend-2jg4.onrender.com/api/task/update/${id}`, updatedTaskData, {
                 withCredentials: true,
             });
             console.log(response.data.data)

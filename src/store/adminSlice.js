@@ -16,7 +16,7 @@ export const getUser = createAsyncThunk(
     'admin/getUser',
     async (_, { rejectWithValue }) => {
         try {
-            const response = await axios.get('http://localhost:8005/api/auth/adminUsers', {
+            const response = await axios.get('https://new-todo-app-backend-2jg4.onrender.com/api/auth/adminUsers', {
                 withCredentials: true, // Include cookies for authentication
             });
             return response.data.data; // Ensure this path matches the API response
@@ -31,7 +31,7 @@ export const deleteUser = createAsyncThunk(
     async (id, { rejectWithValue, dispatch }) => {
         try {
             console.log('Deleting user with ID:', id); // Add this log to check if ID is passed
-            const response = await axios.delete(`http://localhost:8005/api/auth/adminUsers/${id}`, {
+            const response = await axios.delete(`https://new-todo-app-backend-2jg4.onrender.com/api/auth/adminUsers/${id}`, {
                 withCredentials: true,
             });
             dispatch(getUser()); // Refresh the user list

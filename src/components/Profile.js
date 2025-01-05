@@ -36,7 +36,7 @@ function Profile() {
   const fetchApi = async (userId) => {
     setLoading(true);
     try {
-      const response = await axios.get(`http://localhost:8005/api/auth/usersProfile/${userId}`);
+      const response = await axios.get(`https://new-todo-app-backend-2jg4.onrender.com/api/auth/usersProfile/${userId}`);
       setUserProfile(response.data.data); // Assuming `data` contains profile details
     } catch (error) {
       console.error('Error fetching user profile:', error);
