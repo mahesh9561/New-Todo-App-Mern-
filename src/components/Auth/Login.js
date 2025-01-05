@@ -45,7 +45,7 @@ function Login() {
     return (
         <div>
             <div className="flex justify-center bg-white text-slate-700 mb-10">
-                <div className="p-5 border w-1/2 items-center shadow-md rounded-lg -mt-10 bg-white">
+                <div className="p-5 border lg:w-1/2 md:w-full items-center shadow-md rounded-lg -mt-10 bg-white">
                     <div className="text-center text-2xl font-semibold uppercase py-3">Login Form</div>
                     {error && <div className="text-red-500 text-center mb-4">{error}</div>}
                     <form onSubmit={handleSubmit} className="font-semibold">
